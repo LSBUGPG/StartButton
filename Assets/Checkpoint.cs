@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrapTrigger : MonoBehaviour
+public class Checkpoint : MonoBehaviour
 {
     void OnTriggerEnter(Collider collider)
     {
         if (collider.CompareTag("Player"))
         {
-            collider.SendMessage("GoToCheckpoint");
+            collider.SendMessage("SetCheckpoint", transform.position);
+            Destroy(gameObject);
         }
     }
 }
